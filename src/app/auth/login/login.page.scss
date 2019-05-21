@@ -1,10 +1,38 @@
 ion-item{
-    --background: #3880ff;
-    --color: #fff;
+    --background: #ffffff;
+    --color: #000;
+   
 }
 ion-button{
-    --background: #062f77;
+    --background: #F44336;
 }
 a{
-    color: #fff;
+    --color: #fff;
+}
+ion-toolbar{
+    --background: #F44336;
+}
+ion-title{
+    --color: #fff;
+}
+ion-img {
+    object-fit: resize;
+    height: 30%;
+    width: auto !important;
+    border: 0;
+    padding: 0;
+    align-items: center;
+    
+}
+ion-toggle {
+    padding: 0;
+    border-width: 0;
+    position: inherit;
+    top: inherit;
+    right: inherit;
+    zoom: 0.6;
+}
+ion-chip{
+    --background: #ffffff;
+    
 }
