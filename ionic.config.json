@@ -1,0 +1,7 @@
+{
+  "name": "testigo-silencioso-ios",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
