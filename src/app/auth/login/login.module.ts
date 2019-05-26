@@ -6,6 +6,7 @@ import { ServiceProviderService } from '../../../service/service-provider.servic
 import { IonicModule } from '@ionic/angular';
 import { HttpModule} from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { LoginPage } from './login.page';
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     HttpClientModule,
     HttpModule,
