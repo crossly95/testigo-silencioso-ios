@@ -1,8 +1,28 @@
 ion-item{
-    --background: #3880ff;
+    --background: #ffffff;
+    --color: #000;
+   
+}
+ion-button{
+    --background: #F44336;
+}
+a{
     --color: #fff;
 }
-
-ion-button{
-    --background: #062f77;
+ion-toolbar{
+    --background: #F44336;
+}
+ion-title{
+    --color: #fff;
+}
+ion-back-button {
+  color: rgb(253, 245, 245);
+}
+.my-label{
+    font-size: 80%;
+    
+}
+ion-checkbox{
+    --size: 5%;
+    --border-color: #F44336;
 }

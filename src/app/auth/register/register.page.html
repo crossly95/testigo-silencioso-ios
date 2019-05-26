@@ -1,38 +1,124 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-back-button></ion-back-button>
-        </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>Registro de usuario</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content color="primary">
+<ion-content>
   <form #form="ngForm" (ngSubmit)="register(form)">
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
           <div text-center>
-            <h3>Create your account!</h3>
+            <h3>Registrate</h3>
           </div>
           <div padding>
             <ion-item>
-              <ion-input name="name" type="text" placeholder="Name" ngModel required></ion-input>
+              <ion-label>Tipo de documento</ion-label>
+              <ion-select value="1" okText="aceptar" cancelText="cancelar">
+                <ion-select-option value="1">Cédula de cuidadanía</ion-select-option>
+                <ion-select-option value="2">Tarjeta de identidad</ion-select-option>
+                <ion-select-option value="3">Registro civil</ion-select-option>
+                <ion-select-option value="4">Tarjeta de extranjería</ion-select-option>
+                <ion-select-option value="5">Cédula de extranjería</ion-select-option>
+                <ion-select-option value="6">NIT</ion-select-option>
+                <ion-select-option value="7">Pasaporte</ion-select-option>
+                <ion-select-option value="8">Doc. de identificación extranjería</ion-select-option>
+              </ion-select>
             </ion-item>
             <ion-item>
-              <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
+              <ion-input name="name" type="text" placeholder="Número de identificación" ngModel required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+              <ion-input name="name" type="text" placeholder="Nombres" ngModel required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="confirm" type="password" placeholder="Password again" ngModel required></ion-input>
+              <ion-input name="name" type="text" placeholder="Apellidos" ngModel required></ion-input>
             </ion-item>
+            <ion-item>
+              <ion-input name="name" type="text" placeholder="Apellidos" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Fecha de nacimiento</ion-label>
+              <ion-datetime display-format="YYYY-MM-DD"></ion-datetime>
+            </ion-item>
+            <ion-item>
+              <ion-input name="name" type="text" placeholder="Teléfono o celular" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="name" type="text" placeholder="Teléfono de emergencia" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Departamento</ion-label>
+              <ion-select value="1" okText="aceptar" cancelText="cancelar">
+                <ion-select-option value="1">Cédula de cuidadanía</ion-select-option>
+                <ion-select-option value="2">Tarjeta de identidad</ion-select-option>
+                <ion-select-option value="3">Registro civil</ion-select-option>
+                <ion-select-option value="4">Tarjeta de extranjería</ion-select-option>
+                <ion-select-option value="5">Cédula de extranjería</ion-select-option>
+                <ion-select-option value="6">NIT</ion-select-option>
+                <ion-select-option value="7">Pasaporte</ion-select-option>
+                <ion-select-option value="8">Doc. de identificación extranjería</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Municipio</ion-label>
+              <ion-select value="1" okText="aceptar" cancelText="cancelar">
+                <ion-select-option value="1">Cédula de cuidadanía</ion-select-option>
+                <ion-select-option value="2">Tarjeta de identidad</ion-select-option>
+                <ion-select-option value="3">Registro civil</ion-select-option>
+                <ion-select-option value="4">Tarjeta de extranjería</ion-select-option>
+                <ion-select-option value="5">Cédula de extranjería</ion-select-option>
+                <ion-select-option value="6">NIT</ion-select-option>
+                <ion-select-option value="7">Pasaporte</ion-select-option>
+                <ion-select-option value="8">Doc. de identificación extranjería</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Poblado</ion-label>
+              <ion-select value="1" okText="aceptar" cancelText="cancelar">
+                <ion-select-option value="1">Cédula de cuidadanía</ion-select-option>
+                <ion-select-option value="2">Tarjeta de identidad</ion-select-option>
+                <ion-select-option value="3">Registro civil</ion-select-option>
+                <ion-select-option value="4">Tarjeta de extranjería</ion-select-option>
+                <ion-select-option value="5">Cédula de extranjería</ion-select-option>
+                <ion-select-option value="6">NIT</ion-select-option>
+                <ion-select-option value="7">Pasaporte</ion-select-option>
+                <ion-select-option value="8">Doc. de identificación extranjería</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-input name="name" type="text" placeholder="Dirección" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="name" type="text" placeholder="Correo electrónico" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="name" type="password" placeholder="Contraseña" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="name" type="password" placeholder="Confirmar contraseña" ngModel required></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+
+            </ion-item>
+            <div text-right>
+              <ion-col>
+                <ion-checkbox color="dark"></ion-checkbox>
+              </ion-col>
+              <ion-col>
+                He leído y estoy de acuerdo con las <a routerLink='/register' routerDirection="forward">
+                  Política de Privacidad</a>
+              </ion-col>
+            </div>
           </div>
           <div padding>
-            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Register</ion-button>
+            <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Registrars</ion-button>
           </div>
         </ion-col>
-        
+
       </ion-row>
     </ion-grid>
   </form>
