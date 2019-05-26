@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavController, LoadingController } from '@ionic/angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //import { AuthService } from '../auth.service';
 
 @Component({
@@ -8,13 +9,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  registerForm: FormGroup;
+  submitted = false;
 
-  constructor(/*private  authService: AuthService*/ private  router: Router) { }
+  constructor(/*private  authService: AuthService*/
+    private formBuilder: FormBuilder,
+    public navCtrl: NavController,
+    public loadingController: LoadingController) { }
 
   ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      identificacion: ['', [Validators.required, Validators.minLength(6)]]
+
+    });
   }
 
-  register(form) {
+  get f() { return this.registerForm.controls; }
+
+  register() {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
+    }
     /*this.authService.register(form.value).subscribe((res) => {
       this.router.navigateByUrl('home');
     });*/
