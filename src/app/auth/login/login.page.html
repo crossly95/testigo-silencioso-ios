@@ -17,7 +17,7 @@
           <div padding>
             <div class="form-group">
               <ion-item>
-                <ion-input formControlName="user" type="tel" maxlength="16" placeholder="Documento" class="form-control"
+                <ion-input formControlName="user" type="tel" maxlength="20" placeholder="Documento" class="form-control"
                   [ngClass]="{ 'is-invalid': submitted && f.user.errors }"></ion-input>
               </ion-item>
               <div *ngIf="submitted && f.user.errors" >

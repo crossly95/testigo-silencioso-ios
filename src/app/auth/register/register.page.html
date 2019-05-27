@@ -32,29 +32,51 @@
             </div>
             <div class="form-group">
               <ion-item>
-                <ion-input formControlName="identificacion" maxlength="16" type="text" 
-                  placeholder="Número de identificación" [ngClass]="{ 'is-invalid': submitted && f.identificacion.errors }"></ion-input>
+                <ion-input formControlName="identificacion" maxlength="20" type="text"
+                  placeholder="Número de identificación"
+                  [ngClass]="{ 'is-invalid': submitted && f.identificacion.errors }"></ion-input>
               </ion-item>
-              <div *ngIf="submitted && f.identificacion.errors" text-center >
-                  <ion-label *ngIf="f.identificacion.errors.required" color="danger" position="fixed">Numero de identificación requerido</ion-label>
-                  <ion-label *ngIf="f.identificacion.errors.minlength" color="danger" position="fixed">Formato de identificación erroneo</ion-label>
-                </div>
+              <div *ngIf="submitted && f.identificacion.errors" text-center>
+                <ion-label *ngIf="f.identificacion.errors.required" color="danger" position="fixed">Numero de
+                  identificación requerido</ion-label>
+                <ion-label *ngIf="f.identificacion.errors.minlength" color="danger" position="fixed">Formato de
+                  identificación erroneo</ion-label>
+              </div>
             </div>
             <div class="form-group">
               <ion-item>
-                <ion-input name="nombres" type="text" placeholder="Nombres"></ion-input>
+                <ion-input formControlName="nombres" maxlength="30" type="text" placeholder="Nombres"
+                  [ngClass]="{ 'is-invalid': submitted && f.nombres.errors }"></ion-input>
               </ion-item>
+              <div *ngIf="submitted && f.nombres.errors" text-center>
+                <ion-label *ngIf="f.nombres.errors.required" color="danger" position="fixed">Nombres requeridos
+                </ion-label>
+                <ion-label *ngIf="f.nombres.errors.minlength" color="danger" position="fixed">Nombre no valido
+                </ion-label>
+              </div>
             </div>
             <div class="form-group">
               <ion-item>
-                <ion-input name="apellidos" type="text" placeholder="Apellidos"></ion-input>
+                <ion-input formControlName="apellidos" maxlength="35" type="text" placeholder="Apellidos"
+                  [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }"></ion-input>
               </ion-item>
+              <div *ngIf="submitted && f.apellidos.errors" text-center>
+                <ion-label *ngIf="f.apellidos.errors.required" color="danger" position="fixed">Apellidos requeridos
+                </ion-label>
+                <ion-label *ngIf="f.apellidos.errors.minlength" color="danger" position="fixed">Apellido no valido
+                </ion-label>
+              </div>
             </div>
             <div class="form-group">
               <ion-item>
                 <ion-label>Fecha de nacimiento</ion-label>
-                <ion-datetime name="fecha" display-format="YYYY-MM-DD"></ion-datetime>
+                <ion-datetime formControlName="fecha" display-format="YYYY-MM-DD"
+                  [ngClass]="{ 'is-invalid': submitted && f.fecha.errors }"></ion-datetime>
               </ion-item>
+              <div *ngIf="submitted && f.fecha.errors" text-center>
+                <ion-label *ngIf="f.fecha.errors.required" color="danger" position="fixed">Fecha requerida
+                </ion-label>
+              </div>
             </div>
             <div class="form-group">
               <ion-item>
