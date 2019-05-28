@@ -33,9 +33,12 @@ export class RegisterPage implements OnInit {
   register() {
     this.submitted = true;
     // stop here if form is invalid
+    console.log(this.registerForm);
     if (this.registerForm.invalid) {
       return;
     }
+
+    
     /*this.authService.register(form.value).subscribe((res) => {
       this.router.navigateByUrl('home');
     });*/
