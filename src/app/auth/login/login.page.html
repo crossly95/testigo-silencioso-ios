@@ -20,7 +20,7 @@
                 <ion-input formControlName="user" type="tel" maxlength="20" placeholder="Documento" class="form-control"
                   [ngClass]="{ 'is-invalid': submitted && f.user.errors }"></ion-input>
               </ion-item>
-              <div *ngIf="!f.user.valid && f.user.dirty" >
+              <div *ngIf="!f.user.valid && f.user.dirty || submitted" >
                 <ion-label *ngIf="f.user.errors.required" color="danger" position="fixed">Numero de documento requerido</ion-label>
                 <ion-label *ngIf="f.user.errors.minlength" color="danger" position="fixed">Formato de documento erroneo</ion-label>
               </div>
@@ -31,7 +31,7 @@
                 <ion-input formControlName="pass" type="password" maxlength="20" placeholder="contraseña" class="form-control"
                 [ngClass]="{ 'is-invalid': submitted && f.pass.errors }"></ion-input>
               </ion-item>
-              <div *ngIf="!f.pass.valid && f.pass.dirty" >
+              <div *ngIf="!f.pass.valid && f.pass.dirty || submitted" >
                   <ion-label *ngIf="f.pass.errors.required" color="danger" position="fixed">Contraseña requerida</ion-label>
                 </div>
             </div>
