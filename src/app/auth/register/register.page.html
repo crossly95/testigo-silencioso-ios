@@ -105,7 +105,7 @@
             <div class="form-group">
               <ion-item>
                 <ion-label>Departamento</ion-label>
-                <ion-select value="11" name="departamento" okText="aceptar" cancelText="cancelar">
+                <ion-select name="departamento" okText="aceptar" cancelText="cancelar" (ionChange)="cargarMunicipio($event)">
                   <ion-select-option *ngFor="let departamento of departamento" value="{{ departamento.codDepartamento }}">{{ departamento.nombreDepartamento }}</ion-select-option>
                 </ion-select>
               </ion-item>
@@ -113,15 +113,9 @@
             <div class="form-group">
               <ion-item>
                 <ion-label>Municipio</ion-label>
-                <ion-select value="1" name="municipio" okText="aceptar" cancelText="cancelar">
-                  <ion-select-option value="1">Cédula de cuidadanía</ion-select-option>
-                  <ion-select-option value="2">Tarjeta de identidad</ion-select-option>
-                  <ion-select-option value="3">Registro civil</ion-select-option>
-                  <ion-select-option value="4">Tarjeta de extranjería</ion-select-option>
-                  <ion-select-option value="5">Cédula de extranjería</ion-select-option>
-                  <ion-select-option value="6">NIT</ion-select-option>
-                  <ion-select-option value="7">Pasaporte</ion-select-option>
-                  <ion-select-option value="8">Doc. de identificación extranjería</ion-select-option>
+                <ion-select name="municipio" okText="aceptar" cancelText="cancelar">
+                  <ion-select-option *ngFor="let municipio of municipio" value="{{ municipio.codmunicipio }}">{{ municipio.nombremunicipio }}</ion-select-option>
+                  
                 </ion-select>
               </ion-item>
             </div>

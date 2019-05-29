@@ -39,4 +39,16 @@ export class ServiceProviderService {
     };
     return this.http.post(this.api + '/departamentos.php', httpOptions);
   }
+  Municipio(departamento): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.get(this.api + '/municipio.php?departamento=' + departamento, httpOptions);
+  }
+  poblado(municipio): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.post(this.api + '/departamentos.php', httpOptions);
+  }
 }

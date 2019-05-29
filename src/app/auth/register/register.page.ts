@@ -15,6 +15,7 @@ export class RegisterPage implements OnInit {
   loader;
   responseObj;
   departamento: any[];
+  municipio: any[];
 
   constructor(/*private  authService: AuthService*/
     private formBuilder: FormBuilder,
@@ -33,19 +34,7 @@ export class RegisterPage implements OnInit {
       telemergencia: ['', [Validators.required, Validators.minLength(5)]]
 
     });
-    this.presentLoading().then(() => {
-      this.service.Departamentos().subscribe(
-        (response) => {
-          this.dismissLoading();
-          this.dismissLoading().then(() => {
-            this.responseObj = response;
-            this.departamento = this.responseObj;
-            console.log(this.responseObj);
-          });
-        },
-        error => console.log(error)
-      );
-    });
+    this.cargarDepartamento();
 
   }
 
@@ -65,6 +54,38 @@ export class RegisterPage implements OnInit {
 
   }
 
+  cargarDepartamento() {
+    this.presentLoading('Cargando informacion...').then(() => {
+      this.service.Departamentos().subscribe(
+        (response) => {
+          this.dismissLoading();
+          this.dismissLoading().then(() => {
+            this.responseObj = response;
+            this.departamento = this.responseObj;
+            console.log(this.responseObj);
+          });
+        },
+        error => console.log(error)
+      );
+    });
+  }
+
+  cargarMunicipio(event) {
+    this.presentLoading('Cargando municipios...').then(() => {
+      this.service.Municipio(event.detail.value).subscribe(
+        (response) => {
+          this.dismissLoading();
+          this.dismissLoading().then(() => {
+            this.responseObj = response;
+            this.municipio = this.responseObj;
+            console.log(this.responseObj);
+          });
+        },
+        error => console.log(error)
+      );
+    });
+  }
+
   async presentToastWithOptions() {
     const toast = await this.toastController.create({
       message: 'Error, Los numeros de contacto y de emergencia no pueden ser iguales',
@@ -73,9 +94,9 @@ export class RegisterPage implements OnInit {
     });
     toast.present();
   }
-  async presentLoading() {
+  async presentLoading(menss) {
     this.loader = await this.loadingController.create({
-      message: 'Cargando informacion...',
+      message: menss,
       translucent: true,
       cssClass: 'custom-class custom-loading'
     });
