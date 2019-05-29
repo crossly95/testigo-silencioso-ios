@@ -36,7 +36,7 @@
                   placeholder="Número de identificación"
                   [ngClass]="{ 'is-invalid': submitted && f.identificacion.errors }"></ion-input>
               </ion-item>
-              <div *ngIf="submitted && f.identificacion.errors" text-center>
+              <div *ngIf="f.identificacion.dirty && !f.identificacion.valid" text-center>
                 <ion-label *ngIf="f.identificacion.errors.required" color="danger" position="fixed">Numero de
                   identificación requerido</ion-label>
                 <ion-label *ngIf="f.identificacion.errors.minlength" color="danger" position="fixed">Formato de
@@ -48,7 +48,7 @@
                 <ion-input formControlName="nombres" maxlength="30" type="text" placeholder="Nombres"
                   [ngClass]="{ 'is-invalid': submitted && f.nombres.errors }"></ion-input>
               </ion-item>
-              <div *ngIf="submitted && f.nombres.errors" text-center>
+              <div *ngIf="f.nombres.dirty && !f.nombres.valid" text-center>
                 <ion-label *ngIf="f.nombres.errors.required" color="danger" position="fixed">Nombres requeridos
                 </ion-label>
                 <ion-label *ngIf="f.nombres.errors.minlength" color="danger" position="fixed">Nombre no valido
@@ -60,7 +60,7 @@
                 <ion-input formControlName="apellidos" maxlength="35" type="text" placeholder="Apellidos"
                   [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }"></ion-input>
               </ion-item>
-              <div *ngIf="submitted && f.apellidos.errors" text-center>
+              <div *ngIf="f.apellidos.dirty && !f.apellidos.valid" text-center>
                 <ion-label *ngIf="f.apellidos.errors.required" color="danger" position="fixed">Apellidos requeridos
                 </ion-label>
                 <ion-label *ngIf="f.apellidos.errors.minlength" color="danger" position="fixed">Apellido no valido
@@ -73,33 +73,40 @@
                 <ion-datetime formControlName="fecha" display-format="YYYY-MM-DD"
                   [ngClass]="{ 'is-invalid': submitted && f.fecha.errors }"></ion-datetime>
               </ion-item>
-              <div *ngIf="submitted && f.fecha.errors" text-center>
+              <div *ngIf="f.fecha.dirty && !f.fecha.valid" text-center>
                 <ion-label *ngIf="f.fecha.errors.required" color="danger" position="fixed">Fecha requerida
                 </ion-label>
               </div>
             </div>
             <div class="form-group">
               <ion-item>
-                <ion-input name="telefono" type="text" placeholder="Teléfono o celular"></ion-input>
+                <ion-input formControlName="telefono" type="text" placeholder="Teléfono o celular"
+                [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }"></ion-input>
               </ion-item>
+              <div *ngIf="f.telefono.dirty && !f.telefono.valid" text-center>
+                <ion-label *ngIf="f.telefono.errors.required" color="danger" position="fixed">Numero de telefono requerido
+                </ion-label>
+                <ion-label *ngIf="f.telefono.errors.minlength" color="danger" position="fixed">Telefono invalido
+                </ion-label>
+              </div>
             </div>
             <div class="form-group">
               <ion-item>
-                <ion-input name="telemergencia" type="text" placeholder="Teléfono de emergencia"></ion-input>
+                <ion-input formControlName="telemergencia" type="text" placeholder="Teléfono de emergencia"
+                [ngClass]="{ 'is-invalid': submitted && f.telemergencia.errors }"></ion-input>
               </ion-item>
+              <div *ngIf="f.telemergencia.dirty && !f.telemergencia.valid" text-center>
+                <ion-label *ngIf="f.telemergencia.errors.required" color="danger" position="fixed">Numero de telefono requerido
+                </ion-label>
+                <ion-label *ngIf="f.telemergencia.errors.minlength" color="danger" position="fixed">Telefono invalido
+                </ion-label>
+              </div>
             </div>
             <div class="form-group">
               <ion-item>
                 <ion-label>Departamento</ion-label>
-                <ion-select value="1" name="departamento" okText="aceptar" cancelText="cancelar">
-                  <ion-select-option value="1">Cédula de cuidadanía</ion-select-option>
-                  <ion-select-option value="2">Tarjeta de identidad</ion-select-option>
-                  <ion-select-option value="3">Registro civil</ion-select-option>
-                  <ion-select-option value="4">Tarjeta de extranjería</ion-select-option>
-                  <ion-select-option value="5">Cédula de extranjería</ion-select-option>
-                  <ion-select-option value="6">NIT</ion-select-option>
-                  <ion-select-option value="7">Pasaporte</ion-select-option>
-                  <ion-select-option value="8">Doc. de identificación extranjería</ion-select-option>
+                <ion-select value="11" name="departamento" okText="aceptar" cancelText="cancelar">
+                  <ion-select-option *ngFor="let departamento of departamento" value="{{ departamento.codDepartamento }}">{{ departamento.nombreDepartamento }}</ion-select-option>
                 </ion-select>
               </ion-item>
             </div>

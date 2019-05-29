@@ -2,17 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
-
-
-
 @Injectable({
   providedIn: 'root'
 })
+
 export class ServiceProviderService {
   api: string = this.url();
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   private url(): string {
-    return 'http://201.217.211.116/sesion.php';
+    return 'https://www.testigosilencioso.com/webserv';
   }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -25,15 +23,20 @@ export class ServiceProviderService {
 
   Loggin(user, pass): Observable<any> {
     const datos = {
-      numid : user,
-      password : pass
+      numid: user,
+      password: pass
     };
     console.log(datos);
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.http.post(this.api, datos, httpOptions);
+    return this.http.post(this.api + '/sesion.php', datos, httpOptions);
   }
 
-
+  Departamentos(): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.post(this.api + '/departamentos.php', httpOptions);
+  }
 }
