@@ -81,10 +81,11 @@
             <div class="form-group">
               <ion-item>
                 <ion-input formControlName="telefono" type="text" placeholder="Teléfono o celular"
-                [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }"></ion-input>
+                  [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }"></ion-input>
               </ion-item>
               <div *ngIf="f.telefono.dirty && !f.telefono.valid || submitted" text-center>
-                <ion-label *ngIf="f.telefono.errors.required" color="danger" position="fixed">Numero de telefono requerido
+                <ion-label *ngIf="f.telefono.errors.required" color="danger" position="fixed">Numero de telefono
+                  requerido
                 </ion-label>
                 <ion-label *ngIf="f.telefono.errors.minlength" color="danger" position="fixed">Telefono invalido
                 </ion-label>
@@ -93,10 +94,11 @@
             <div class="form-group">
               <ion-item>
                 <ion-input formControlName="telemergencia" type="text" placeholder="Teléfono de emergencia"
-                [ngClass]="{ 'is-invalid': submitted && f.telemergencia.errors }"></ion-input>
+                  [ngClass]="{ 'is-invalid': submitted && f.telemergencia.errors }"></ion-input>
               </ion-item>
               <div *ngIf="f.telemergencia.dirty && !f.telemergencia.valid || submitted" text-center>
-                <ion-label *ngIf="f.telemergencia.errors.required" color="danger" position="fixed">Numero de telefono requerido
+                <ion-label *ngIf="f.telemergencia.errors.required" color="danger" position="fixed">Numero de telefono
+                  requerido
                 </ion-label>
                 <ion-label *ngIf="f.telemergencia.errors.minlength" color="danger" position="fixed">Telefono invalido
                 </ion-label>
@@ -105,51 +107,90 @@
             <div class="form-group">
               <ion-item>
                 <ion-label>Departamento</ion-label>
-                <ion-select name="departamento" okText="aceptar" cancelText="cancelar" (ionChange)="cargarMunicipio($event)">
-                  <ion-select-option *ngFor="let departamento of departamento" value="{{ departamento.codDepartamento }}">{{ departamento.nombreDepartamento }}</ion-select-option>
+                <ion-select formControlName="departamento" okText="aceptar" cancelText="cancelar"
+                  (ionChange)="cargarMunicipio($event)" [ngClass]="{ 'is-invalid': submitted && f.departamento.errors }">
+                  <ion-select-option *ngFor="let departamento of departamento"
+                    value="{{ departamento.codDepartamento }}">{{ departamento.nombreDepartamento }}</ion-select-option>
                 </ion-select>
               </ion-item>
+              <div *ngIf="submitted && f.departamento.errors" text-center>
+                <ion-label *ngIf="f.departamento.errors.required" color="danger" position="fixed">Departamento requerido
+                </ion-label>               
+              </div>
             </div>
             <div class="form-group">
               <ion-item>
                 <ion-label>Municipio</ion-label>
-                <ion-select name="municipio" okText="aceptar" cancelText="cancelar">
-                  <ion-select-option *ngFor="let municipio of municipio" value="{{ municipio.codmunicipio }}">{{ municipio.nombremunicipio }}</ion-select-option>
-                  
+                <ion-select formControlName="municipio" okText="aceptar" cancelText="cancelar"
+                (ionChange)="cargarPoblado($event)" [ngClass]="{ 'is-invalid': submitted && f.municipio.errors }">
+                  <ion-select-option *ngFor="let municipio of municipio" value="{{ municipio.codmunicipio }}">
+                    {{ municipio.nombremunicipio }}</ion-select-option>
                 </ion-select>
               </ion-item>
+              <div *ngIf="submitted && f.municipio.errors" text-center>
+                <ion-label *ngIf="f.municipio.errors.required" color="danger" position="fixed">Municipio requerido
+                </ion-label>               
+              </div>
             </div>
             <div class="form-group">
               <ion-item>
                 <ion-label>Poblado</ion-label>
-                <ion-select value="1" name="poblado" okText="aceptar" cancelText="cancelar">
-                  <ion-select-option value="1">Cédula de cuidadanía</ion-select-option>
-                  <ion-select-option value="2">Tarjeta de identidad</ion-select-option>
-                  <ion-select-option value="3">Registro civil</ion-select-option>
-                  <ion-select-option value="4">Tarjeta de extranjería</ion-select-option>
-                  <ion-select-option value="5">Cédula de extranjería</ion-select-option>
-                  <ion-select-option value="6">NIT</ion-select-option>
-                  <ion-select-option value="7">Pasaporte</ion-select-option>
-                  <ion-select-option value="8">Doc. de identificación extranjería</ion-select-option>
+                <ion-select formControlName="poblado" okText="aceptar" cancelText="cancelar"
+                [ngClass]="{ 'is-invalid': submitted && f.poblado.errors }">
+                  <ion-select-option *ngFor="let poblado of poblado" value="{{ poblado.codcentropoblado }}">
+                    {{ poblado.nombrepoblado }}</ion-select-option>
                 </ion-select>
               </ion-item>
+              <div *ngIf="submitted && f.poblado.errors" text-center>
+                <ion-label *ngIf="f.poblado.errors.required" color="danger" position="fixed">Poblado requerido
+                </ion-label>               
+              </div>
             </div>
             <div class="form-group">
               <ion-item>
-                <ion-input name="direccion" type="text" placeholder="Dirección"></ion-input>
+                <ion-input formControlName="direccion" type="text" maxlength="70" placeholder="Dirección" 
+                [ngClass]="{ 'is-invalid': submitted && f.direccion.errors }"></ion-input>
               </ion-item>
+              <div *ngIf="f.direccion.dirty && !f.direccion.valid || submitted" text-center>
+                <ion-label *ngIf="f.direccion.errors.required" color="danger" position="fixed">Direccion requerida
+                </ion-label>               
+              </div>
+              <div *ngIf="f.direccion.dirty && !f.direccion.valid || submitted" text-center>
+                <ion-label *ngIf="f.direccion.errors.pattern" color="danger" position="fixed">Caracteres validos # -
+                </ion-label>               
+              </div>
             </div>
             <div class="form-group">
               <ion-item>
-                <ion-input name="correo" type="text" placeholder="Correo electrónico"></ion-input>
+                <ion-input formControlName="correo" type="text" maxlength="45" placeholder="Correo electrónico"
+                [ngClass]="{ 'is-invalid': submitted && f.correo.errors }"></ion-input>
               </ion-item>
+              <div *ngIf="f.correo.dirty && !f.correo.valid || submitted" text-center>
+                <ion-label *ngIf="f.correo.errors.required" color="danger" position="fixed">Email requerida
+                </ion-label>               
+              </div>
+              <div *ngIf="f.correo.dirty && !f.correo.valid || submitted" text-center>
+                <ion-label *ngIf="f.correo.errors.email" color="danger" position="fixed">Email invalida
+                </ion-label>               
+              </div>
             </div>
             <div class="form-group">
               <ion-item>
-                <ion-input name="contraseña" type="password" placeholder="Contraseña"></ion-input>
+                <ion-input formControlName="contrasena" maxlength="40" type="password" placeholder="Contrasena"
+                [ngClass]="{ 'is-invalid': submitted && f.contrasena.errors }"></ion-input>
               </ion-item>
+              <div *ngIf="f.contrasena.dirty && !f.contrasena.valid || submitted" text-center>
+                <ion-label *ngIf="f.contrasena.errors.required" color="danger" position="fixed">Contrasena requerida
+                </ion-label>               
+              </div>
+              <div *ngIf="f.contrasena.dirty && !f.contrasena.valid || submitted" text-center>
+                <ion-label *ngIf="f.contrasena.errors.pattern" color="danger" position="fixed">(Mayuscula,minuscula,numero y un caracter)
+                </ion-label>               
+              </div>
+            </div>
+            <div class="form-group">
               <ion-item>
-                <ion-input name="confcontraseña" type="password" placeholder="Confirmar contraseña">
+                <ion-input name="confcontrasena" type="password" placeholder="Confirmar contrasena">
                 </ion-input>
               </ion-item>
             </div>

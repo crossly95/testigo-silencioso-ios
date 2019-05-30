@@ -49,6 +49,6 @@ export class ServiceProviderService {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    return this.http.post(this.api + '/departamentos.php', httpOptions);
+    return this.http.post(this.api + '/poblado.php?ciudad=' + municipio, httpOptions);
   }
 }

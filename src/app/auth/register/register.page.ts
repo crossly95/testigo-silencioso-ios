@@ -16,6 +16,7 @@ export class RegisterPage implements OnInit {
   responseObj;
   departamento: any[];
   municipio: any[];
+  poblado: any[];
 
   constructor(/*private  authService: AuthService*/
     private formBuilder: FormBuilder,
@@ -31,9 +32,15 @@ export class RegisterPage implements OnInit {
       apellidos: ['', [Validators.required, Validators.minLength(3)]],
       fecha: ['', [Validators.required]],
       telefono: ['', [Validators.required, Validators.minLength(5)]],
-      telemergencia: ['', [Validators.required, Validators.minLength(5)]]
-
-    });
+      telemergencia: ['', [Validators.required, Validators.minLength(5)]],
+      departamento: ['', [Validators.required]],
+      municipio: ['', [Validators.required]],
+      poblado: ['', [Validators.required]],
+      direccion: ['', [Validators.required, Validators.pattern('^[#0-9a-zA-Z-\\s]+$')]],
+      correo:  ['', [Validators.required, Validators.email]],
+      contrasena: ['', [Validators.required, Validators.minLength(8),
+      Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\\*\\.\\,\\!\\-\\_\\"\\#\\$\\%\\&\\/\\(\\)\\?\\¿\\¡\\+\\{\\}\\;\\:\\s])[a-zA-Z0-9\\*\\.\\,\\!\\-\\_\\"\\#\\$\\%\\&\\/\\(\\)\\?\\¿\\¡\\+\\{\\}\\;\\:\\s)]+$')]],
+      });
     this.cargarDepartamento();
 
   }
@@ -78,6 +85,22 @@ export class RegisterPage implements OnInit {
           this.dismissLoading().then(() => {
             this.responseObj = response;
             this.municipio = this.responseObj;
+            console.log(this.responseObj);
+          });
+        },
+        error => console.log(error)
+      );
+    });
+  }
+
+  cargarPoblado(event) {
+    this.presentLoading('Cargando poblados...').then(() => {
+      this.service.poblado(event.detail.value).subscribe(
+        (response) => {
+          this.dismissLoading();
+          this.dismissLoading().then(() => {
+            this.responseObj = response;
+            this.poblado = this.responseObj;
             console.log(this.responseObj);
           });
         },
